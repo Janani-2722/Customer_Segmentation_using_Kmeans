@@ -1,11 +1,17 @@
 import streamlit as st
-import pickle
 import numpy as np
 import pandas as pd
 
 # Load models
-kmeans = pickle.load(open(r'C:\Users\xnovaq.16\Documents\myenv\Marketing_Project\customer_segmentation_using_kmeans\Marketing_analysis\kmeans_model.pkl', 'rb'))
-scaler = pickle.load(open(r'C:\Users\xnovaq.16\Documents\myenv\Marketing_Project\customer_segmentation_using_kmeans\Marketing_analysis\scaler.pkl', 'rb'))
+from pathlib import Path
+import pickle
+
+BASE_DIR = Path(__file__).parent
+
+with open(BASE_DIR / "kmeans_model.pkl", "rb") as f:
+    kmeans = pickle.load(f)
+with open(BASE_DIR / "scaler.pkl", "rb") as f:
+    scaler = pickle.load(f)
 
 # Cluster descriptions
 cluster_names = {
